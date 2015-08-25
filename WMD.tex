@@ -1,0 +1,808 @@
+
+%% bare_jrnl.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[journal]{IEEEtran}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{changepage}
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley and Jeff Goldberg.
+% This package may be useful when used in conjunction with IEEEtran.cls'
+% captionsoff option. Some IEEE journals/societies require that submissions
+% have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.3.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% For subfigure.sty:
+% \let\MYorigsubfigure\subfigure
+% \renewcommand{\subfigure}[2][\relax]{\MYorigsubfigure[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat/subfig command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{The Nuclear Ratchet:\\
+\Large{The Necessity of Preparing for a Proliferated World}}
+
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Patrick~Byrne%,~\IEEEmembership{Weapons of Mass Destruction Final Paper}%
+        %John~Doe,~\IEEEmembership{Fellow,~OSA,}
+        %and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\thanks{%M. Shell is with the Department
+%of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+%GA, 30332 USA 
+e-mail: pjb2132@columbia.edu}}% <-this % stops a space
+%\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
+%\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Weapons of Mass Destruction Final Paper - Submitted May 8~2015}%Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, May 8~2015}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+%\begin{abstract}
+%\boldmath
+%\blindtext[1]
+%\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+%\begin{IEEEkeywords}
+%IEEEtran, journal, \LaTeX, paper, template.
+%\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+Throughout the cold war, the problem of nuclear deterrence was the sole province of the superpowers.  The United States, the USSR, and to a lesser extent the People's Republic of China were the main players.  While all three governments found themselves in conflict in various combinations during the Cold War, the disputes in which nuclear deterrence played a role only ever had two interested and nuclear armed parties.  This was by no means an easy system to model and strategize around, and remains so to this day.  Nevertheless, during this period a great deal of intellectual effort was spent creating several theories of nuclear deterrence and developing them in tandem with new political and technological realities.\par
+A system with more nuclear players, with diverse interests and alliances, in which crises potentially involve multiple nuclear stakeholders, presents an exponentially more daunting problem.  To date, however, most attempts to grapple with this reality have gone no further than insisting that the non-proliferation regime be enforced with such rigor as to ever allow such a system to arise.  In the same way that Cold War theories tended to break down if a nuclear exchange was  initiated, this plan of action permits no imperfections in its implementation, and provides no contingencies in the event of failure.\par
+It is imperative that serious work begin on a more robust roadmap to allow countries to safely negotiate a world in which nuclear weapons are widely held. Possibly the most famous example of this type of work is Kenneth Waltz's "The Spread of Nuclear Weapons: More May Be Better"$^{\cite{Waltz}}$.  As the author states (emphasis mine):\\
+\begin{adjustwidth}{10mm}{10mm}
+...identifying more of the possibilities would not enable one to say how they are likely to unfold in a world made different by the slow spread of nuclear weapons. We want to know both the likelihood that new dangers will manifest themselves and what the possibilities of their mitigation may be. \textbf{We want to be able to see the future world, so to speak, rather than merely imagining ways in which it may be a better or a worse one.}\\
+\end{adjustwidth}
+It is not the purpose of this paper to endorse one or another argument, but rather to encourage an active discussion with many different points of view.  34 years have passed since Kenneth Waltz's paper, but the trend of the debate, even in literature claiming to deal directly with the consequences of a proliferated world $^{\cite{Prep_Nuke}}$ is toward scaremongering, treating nuclear terrorism as equally likely and devastating as a state-to-state nuclear conflict, presenting 'options' that amount essentially to gambling everything on the NPT regime, and when and if that strategy fails, working towards 'withstanding' and 'winning' nuclear wars.  This is reminiscent of the doctrine of Mutual Assured Destruction, which never found a way out of the fundamental paradox of credibly threatening suicide.  We owe it ourselves and future generations to at least attempt to develop visions of a world in which nuclear weapons are widespread, but their use is \textbf{not}.\par
+This work takes on further urgency if, as is this paper attempts to demonstrate, nuclear weapons \textit{will} continue to proliferate.  Before we are overtaken by events, the nuclear deterrence and international security communities should encourage a discussion about what such a proliferated world would look like, and how nations can advance their interests and those of their friends and allies without triggering a nuclear exchange.  It is critical to begin the work now, when the threat is most remote.  While it is impossible to plan for all contingencies, blundering into the future with no plan is the surest path to disaster.
+%\blindtext
+\section{Barriers to Entry}
+There is a risk of overestimating the difficulty of developing a nuclear weapons program.  Given the current makeup of the nuclear club, and those attempting to break in, the list of potential proliferators may seem limited to nations wealthy and advanced enough to gain nothing by challenging the status quo or isolated pariah states on whom countries enforcing NPT can exert pressure with a relatively free hand.  This may be the present state of things, but it is not due to some immutable law of history.  There is nothing preventing a plurality of modern nations from pursuing a nuclear weapons program, if they were to judge such a course to be in their best interest.
+\subsection{Economic}
+The Manhattan Project was one of the most costly undertakings in human history.  At one point during the war, the Clinton Engineer Works alone consumed nearly 1\%$^{\cite{Cam_Reed}}$ of all electricity generated in the nation.  A study by the Brookings Institution$^{\cite{Brookings}}$ estimates that the cost in 2015 dollars of the Manhattan Project was \$30 billion, at its peak consuming 0.4\% of the nation's (war inflated) Gross Domestic Product$^{\cite{CRS}}$.  As a useful comparison, at war's end the US had spent as much on all the bombs, mines, and grenades procured during WWII as on the 4 nuclear weapons the Manhattan Project had thus far yielded, and in 2015 0.4\% of GDP is roughly the budget of the federal department of transportation.\par 
+The United States' GDP during WWII, adjusted for inflation, was roughly 2 trillion dollars$^{\cite{BEA}}$.  For a nation to pursue a program of development on the same timeline, and at the same level of economic commitment as was devoted to the Manhattan Project, a GDP of nearly 1 trillion dollars is required. There are 19 nations that have economies on this scale, and could thus shoulder the economic burden of developing nuclear weapons on the same 5-year timescale that the Manhattan Project required.\par
+This model assumes that the cost of a nuclear program has remained roughly constant since 1945.  That assumption is easily invalidated by fact that of the ten nations that have successfully nuclearized, South Africa, Israel, Pakistan and North Korea have economies much smaller than the 1 trillion dollar threshold.  The costs of the US program were exacerbated by pursuing both Uranium and Plutonium enrichment simultaneously, the difficulty of sourcing Uranium ore and heavy water for the Allied powers during the war$^{\cite{Rhodes}}$, and the inflationary effect of attempting novel research on a fixed timescale.  Modern proliferators have the luxuries of choosing the most economically sensible enrichment program, as well as existing international markets in fissile materials and nuclear technology, however strictly regulated.\par
+The Manhattan Project thus represents a practical ceiling on the cost of developing a nuclear weapon.  There is, of course, nothing preventing a poorer nation from devoting a larger share of its resources to nuclearizing if it felt sufficiently compelled to do so.  North Korea is the poorest and economically weakest of the nuclear nations$^{\cite{CIA}}$, and if that country's economy is taken to be the practical floor on which countries can support a nuclear program, there are over 90 nations that could have nuclear weapons, assuming the right combination of motivation and political and social will to withstand the associated deprivations.
+\subsection{Scientific}
+The crisis of WWII galvanized the scientific community, focusing the top minds of the Allied nations, as well as a great many alienated by or driven from the Axis, on the the single task of unlocking the fission chain reaction.  The problem may not have required such a brain trust, but to date, no nation other than the United States has achieved a nuclear deterrent without relying either on espionage or on direct help from a nuclear nation.\par
+The problem of nuclearizing is clearly not solely one of money.  A nation must first achieve an advanced scientific and technical level of sophistication, and then must generally convince another nation to sell, lend, or rent the necessary apparatus to begin the work of a nuclear program.  Access to enough highly enriched U$^{235}$ or Pu$^{239}$ to construct a weapon is a further requirement, but these hurdles are also lower than it would at first blush seem.\par
+Solving a problem is orders of magnitude easier when one knows the answer, or at least that there is an answer to be found.  Original research is much more difficult, and as a result is slower and more costly.  There are no guideposts if the research is going down a blind alley - the Nazis' research led them to the mistaken conclusion that a nuclear chain reaction could not be sustained and caused their abandonment of the project.  The most difficult scientific work - that of discovery - was done by the US and the results of that experiment broadcast to the world in the most unambiguous manner possible in 1945.  The problem that remains for would-be proliferators is essentially one of reverse-engineering.\par
+Developing a homegrown talent pool with the knowledge and skill to reverse engineer a nuclear bomb and is within every nation's power, is in fact their right under international law.  Article 4 the Nuclear Non-Proliferation Treaty$^{\cite{NPT}}$ guarantees access for all nations to the peaceful uses of nuclear energy.  Nuclear scientists, engineers, and technicians are all needed to operate and maintain a peaceful nuclear program of energy generation and research.  These civilian scientists will be able to easily take on the role of assisting in a military nuclear program, in some cases without any telling change in their routine or academic output.  While there are several nations that have lately been subject to military attack or economic sanctions for attempting to cloak a military nuclear project in the guise of a civilian program, Pakistan, India, South Africa and Israel have all successfully followed this path to entry into the nuclear club.\par
+There are many paths to acquiring enough fissile material for a bomb.  Smuggling is the most obvious, and it is thus the most heavily policed.  Indeed, all nations that have successfully constructed nuclear weapons have done so using domestically enriched material.  As the number of nuclear nations increase, the difficulty of detecting and preventing smuggling will rise as well.  However, for the short term, it is most instructive to consider material diverted clandestinely from a legitimate civilian program.\par
+Power generation is most usually done with Uranium enriched to only 4-5\% or less, and 90\% is required for a weapon.  As the plot below$^{\cite{WNA}}$ shows, 4\% enrichment level actually represents over half of the work necessary to enrich natural Uranium (0.007\% U$^{235}$) to bomb-grade.  Research reactors, with their more highly enriched fuel, are an even larger risk, and have been the launchpad for a nuclear weapons breakout.$^{\cite{Negev}}$.  South Africa's industrial production of enriched uranium for export provided the obvious route to a nuclear weapon.$^{\cite{Pelindaba}}$ A country with a domestic nuclear industry and a domestic enrichment capability is thus most of the way to a bomb.  \par
+\begin{figure*}
+\includegraphics[width = 1.9\columnwidth,keepaspectratio]{uranium_enrichment_uses_mod.png}
+\end{figure*}
+Further, the international safeguards on unenriched Uranium are much lighter than on enriched material, and even natural Uranium can be used in a heavy water reactor to enrich Plutonium$^{\cite{CIRUS}}$.  Though heavy water producers are under IAEA supervision, the technology involved in enriching Deuterium is much simpler than that required to enrich Uranium, permitting cirumvention through development of a domestic industry with a lower and less obvious investment in infrastructure.\par
+The waste stream of nuclear energy generation also contains Plutonium and is thus a third potential material source.  To be fair, waste is rapidly poisoned by the militarily useless Pu$^{240}$, meaning that nuclearizing through diverting waste would require the rapid and early removal of fuel from the energy generation supply chain for recycling.  While this limits either the stealth or the speed with which nuclear weapons could be pursued through waste diversion, it does not present an insurmountable problem to a dedicated proliferator.\par
+Finally, though nations have traditionally announced their entry into the nuclear club with a test detonation - thus requiring enrichment of at least two bomb's worth of material - this is by no means a necessity.  Nations are under no obligation to even acknowledge that they have achieved nuclear capabilities, as is the case with Israel.  All that is technically required for nuclear deterrence is that the nation in question demonstrates it meets the three requirements of economic strength, technical sophistication, and potential access to bomb-grade fissile material.\par
+\section{Nuclear Ratchet Effect}
+The obligation of the nuclear weapons states under the NPT to provide peaceful access to nuclear energy will always be in tension with their obligation to prevent proliferation.  If developing nations are to advance their standard of living, their consumption of energy must rise.  As concerns about climate change and the health effects of pollution become more widespread, non-fossil fuel sources can be expected to make up a larger percentage of that new generating capacity.  Solar, wind, and even hydroelectric$^{\cite{Cali_Drought}}$ are subject to the vagaries of weather and climate.  At present, only nuclear offers a steady, sizeable and clean alternative.  Work on proliferation resistant reactors is ongoing$^{\cite{AHWR}}$, but for the forseeable future we will be faced with a world in which more nations will demand access to nuclear energy, and with it, the means and opportunity to proliferate.  Barring a radical rewriting of the NPT, all that remains to upset the balance is sufficient motive.
+\subsection{Desirability of Nuclearizing}
+While nuclear weapons in aggregate destabilize international relations and put at risk the survival of humanity as a whole, it is an inescapable fact that for the Nth proliferating nation they have quite the opposite effect.  For a nation with no nuclear neighbors, it suddenly finds itself in the position of regional leader, able to influence and coerce those around it.  For a nation \textit{with} nuclear neighbors, it casts off its second class status and is able to speak to those nations that once dictated policy, if not as an equal, at least in the assurance that its words will be listened to closely and its desires not casually overridden.\par
+It is a fact that nuclear weapons' main role in international politics is that of an implicit and ever-present threat, and their effectiveness in that role is directly related to the credibility of that threat. Even a few nuclear weapons provide a powerful disincentive for other nations, even those possessing superior conventional and/or nuclear power, to project that power in areas considered sufficiently critical to make a nuclear threat credible.\par
+In the event of a military invasion, nuclear retaliation is almost guaranteed, especially as the survival of the ruling regime is threatened.  Regime change operations such as those practiced by the US in Iraq, Afghanistan, and Grenada, or the more limited incursions such as those by Russia in Georgia and Ukraine, practiced against a nuclear armed state, would draw a nuclear response almost as a matter of course.  This is a powerful disincentive to military adventurism, and given the large disparities in conventional power that exist in the world today, provides a sharp spur to the militarily weak nations of the world to consider proliferation.\par
+\subsection{Undesirability of de-Nuclearizing}
+Once a nation has nuclearized, for the reasons listed above, it is extremely unlikely that it will voluntarily surrender that privileged status.  The arms control successes of the past few decades between the US and the USSR and later the Russian Federation have had more to do with their large - and in the case of the USSR ruinous – over sufficiency of forces.  While both nations continue to reduce the size of their arsenals, neither nation is likely in the near, mid or long term to completely de-nuclearize.  There have been a few examples of countries completely dismantling their nuclear arsenal, but these tended to occur under very unique circumstances, generally a sharp break from a previous political order, but in such a way that social order did not break down, and political authority passed uninterrupted to the new regime.  The modern example of Syria, which once aspired to a nuclear bomb, means that relying on those examples as a roadmap to denuclearization is a shaky prospect at best.\par
+Belarus, Kazakhstan and Ukraine did not develop their own nuclear weapons, in a sense the nukes were stranded there by the fall of the USSR.  These were former satellites of a highly centralized federation charged with developing a functioning government after almost a century of reliance on Moscow.  The chaos of the collapse led to difficulties in command and control of their militaries, and indeed with the breakup of the trans-national USSR, large parts of their officer corps considered themselves foreign nationals $^{\cite{IDA}}$.  They were in dire need of foreign investment and other economic aid, which was promised by Russia, their strongest neighbor, and the U.S., the world's sole remaining superpower.  Given the intense short term pressure these governments were under, domestically and internationally, and their relative weakness and inexperience at international politics, it is unsurprising that they were prevailed upon to de-nuclearize.  Ukraine in particular resisted until a security guarantee was affirmed by both the United States and Russia.  With one party to the guarantee actively annexing territory while the other sits on the sidelines, it should surprise no one if nations that find themselves in similar situations cling more tightly to their weapons.\par
+South Africa's nuclear weapons program was a direct offshoot of its racial politics, and as those politics changed, so too did the rationale for its arsenal.  Facing the reality of a rapidly de-colonializing Africa, its strict whites-only rule would inevitably be a provocation and source of conflict with its neighbors.  Given that many of them were helped in gaining their independence by the Soviet Union, nuclear weapons seemed an excellent deterrent to the myriad of potentially hostile nations suddenly rising at its borders, and their powerful patron abroad.  As the 80's and 90's went on, the USSR fell, the tide of international opinion turned sharply against the Apartheid regime, and the political gains of the ANC made it clear that regime would not be in place much longer.  The nuclear arsenal was now no longer needed to ward off a superpower$^{\cite{DeKlerk}}$ and useless against a domestic political threat – a threat which would, by taking power, remove the impetus for their decolonialized neighbors' hostility.  And though the decision was never presented as such, the idea that a political regime founded on racial discrimination would passively allow the rise of the first nuclear-armed black African nation through inaction is rather incredible.  Coupled with the ANC regime's desire for social stability, a lightened budget, foreign aid and international prestige, de-proliferation would have been viewed as a win-win.  It should finally be noted that while South Africa has eliminated its nuclear weapons program, it retains its stockpile of highly enriched uranium.
+\section{Dangers of a Proliferated world}
+In \textit{The Second Nuclear Age}$^{\cite{Bracken}}$, Paul Bracken lays out a vision of the developing post Cold War nuclear order.  The fall of the USSR left the former Soviet bloc without the implicit guarantee of the nuclear umbrella.  American allies are left with questions as to the US's commitment in the absence of the existential threat posed by global communism.  In this world, local conflicts acquire more importance, both due to the lack of a larger global struggle overshadowing them, and due to the lack of powerful patrons with an interest in restoring stability.  In the years since the end of WWII, many nations that were devastated by the war or simply economically or socially backward, especially in contentious areas of the Middle East and East Asia, have made enormous gains.\par
+One can draw useful conclusions about the Second Nuclear Age from the first.  Israel and South Africa both nuclearized in response to local conventional threats, a state of affairs that will not fundamentally change regardless of the nuclear age we are in.  India was in the position that many nations now are, non-aligned and without an external nuclear guarantee.  Without the protection of one side or another, and without the desire to cultivate such a relationship, it chose to pursue a nuclear program to defend its own interests.  This immediately led to Pakistan pursuing a nuclear program, almost the textbook example of a nuclear domino.  It was this begetting of proliferation by proliferation that was one of the main drivers in the world's recent intervention into Iran's efforts at a nuclear weapon.  The ease with which this could have occurred is easy to imagine when one compares the relative strength and sophistication of the Gulf nations of today with that of Pakistan in 1965, when Prime Minister Z. A. Bhutto's assessment of the scale of the task, and Pakistan's determination to complete it were clear:
+\vspace{10mm}
+\begin{adjustwidth}{10mm}{10mm}
+``...if India builds the bomb, we will eat grass or leaves, even go hungry, but we will get one of our own."$^{\cite{Bhutto}}$\\
+\end{adjustwidth}\par
+It seems clear that the fundamental drivers of proliferation during the Cold War are more relevant to more nations now than they were in the past.  With more nations in the position to respond to those drivers, we can reasonably expect the pressure on the NPT regime to increase.  Certain members of the realist camp$^{\cite{Waltz}}$ have suggested that there may be a new, more stable equilibrium to be reached once most nations possess nuclear weapons.  Serious thought needs to go into what exists on the other side of the NPT, and if the world could survive the transition such a such a state of affairs, if one even exists.  I will not venture a guess as to what a widely proliferated world would be, but I can discuss some likely scenarios (an infinitesimal subset) that will occur as the world makes its transition to whatever awaits. 
+\subsection{'Immature' Nations}
+The argument is often advanced in discussing proliferation that other nations may not be as responsible stewards of their nuclear arsenal as the current nuclear weapons states.  The historical animosities in some parts of the world are so deep and irreconcilable that we could not be sure, having introduced nuclear weapons to the mix, that they would not be used in fits of passion.  Further, in many states the military is the dominant, or at least a powerful influence in politics.  The risk here is an institution unwilling to contemplate scenarios in which the country inescapably loses more than it gains, highly desirous to incorporate any new weapons into their arsenals, and without civilian strategists and politicians riding herd to ensure intelligent deployment and command and control strategies.  Other nations are domestically unstable, and could collapse into chaos reminiscent of that following the Soviet Union's breakup in the best case, or in the worst, that of Syria.  In the confusion, nuclear weapons could be stolen and possibly even used by any number of parties.\par 
+These arguments are often attacked as ethnocentric and chauvinistic, and it is certainly possible for them to be advanced from such a perspective.  That does not invalidate them, however.  As Francis Gavin somewhat confusingly argues$^{\cite{Gavin}}$, the immaturity of new entrants to the nuclear arena is not to be taken as a slight, as the US, USSR and China all behaved amateurishly, deployed their forces and advanced doctrine in destabilizing ways, and walked with each of the other two to the brink at least once during the Cold War, and here we all are.  I would argue the lesson to be taken from this history is that the condition of being or not being in possession of nuclear weapons represents a real bifurcation in how military and political objectives are conceived and executed.  The divergence from any previous experience leads inescapably to, indeed almosts demands, exploration of the new equilibirum created by nuclear weapons for advantage.  Regardless of the social or scientific advancement of the society in question, any country will undergo a period of growing into its arsenal, when the risk of accidental use is highest.  That the nuclear weapons states have grown out of this awkward phase safely is no reason for sanguinity about repeated experiments, and one does not need to be a bigot to feel this way.
+\subsection{Erosion of Taboos}
+Since Nagasaki, no nation has used nuclear weapons in anger.  This very lack of use tends to reinforce itself, as the idea of nuclear weapons as legitimate warfighting tools, and the Cold War itself, passes out of living memory.  There are hundreds of millions of people on earth for whom the USSR and the Cold War occupies the same place in their memories as the Holy Roman Empire, Byzantium, and other history class factoids.\par
+The first nuke used in battle however, will undo all the salutary effects of the last 70 years of nuclear peace, quite possibly permanently.  While it has become politically more difficult to brandish nuclear weapons, the political climate at the moment seems to be reversing this trend.  As China extends its influence in East and Southeast Asia as well as the Pacific, challenging the US's traditional supremacy in that area.  Russia's Vladimir Putin has taken to appeals to nationalism for support of a campaign of intimidation and aggression in Eastern Europe and Central Asia, and has warned off US and European intervention with implied and explicit threats that he might resort to his nuclear arsenal.\par
+In short the Second Nuclear Age is beginning to resemble the first in many ways, while losing none of its troubling uniquenesses.  Rather than transitioning between discrete numbered nuclear ages, what seems more likely is that the world is and will continue go through periods of continuous flux between stability and instability.  If some degree of nuclear weapons proliferation is to be taken for granted, then in each subsequent period of instability, the number of nuclear nations, and thus the chance of use, will increase.  Given these relatively safe assumptions, it therefore seems likely that the nuclear taboo will come to an end at some point.  The problem may be that when it ends, it may not do so dramatically and awfully enough as to do any real good.\par
+It was the fundamental difference between the nuclear explosions (15 and 21 kilotons on Hiroshima and Nagasaki, respectively) and any that came before that shocked the world into an awe of these weapons.  The same, however, could have been said - and was - about the use of aerial bombardment at Guernica.  But as WWII dragged on and the belligerents became more desperate to end the war, the taboo on bombing civilian centers eroded until entire cites were being (conventionally) razed to the ground.\par
+In terms of destructive capability, first generation nuclear arms were really only a change in degree rather than type.  They merely offered to deliver in one plane what previously required squadrons of bombers.  During the war, several conventional attacks were in the kiloton range.  In the Blitz, over the course 9 months 12 kilotons of conventional explosive were dropped on London.  As the war progressed the rate of delivery increased as well.  The Dresden raid dropped 4 ktons, and the Tokyo firebombing campaign, while only delivering 2 ktons, was the most deadly attack of the war, Hiroshima and Nagasaki included.  While the yield of nuclear weapons has since grown a thousandfold, the facts remain that a determined enemy can cause death and destruction on the nuclear scale conventionally, and that the victim can absorb that damage and continue to fight, even when, as in the case of Dresden and Tokyo, the war has clearly already been lost.\par
+I hope that it will not be viewed as downplaying the enormity of what was done to Hiroshima and Nagasaki to point out that both are now thriving cities.  The damage has been erased, except where it remains as a deliberate reminder of the past.  People live and raise families with no significant effects due to the radiological nature of the bombing.  The Windscale accident, the worst in the history of the UK, in which a radioactive uranium pile assembled for the production of plutonium burned for 5 days, has been tied to 240 cancer fatalities.  In Chernobyl, only 237 people succumbed in the first year to acute radiation sickness.  Projections of the long term health effects on the health of people living nearby vary from 4,000 extra cases of cancer to 800,000, but outside the exclusion zone, life in the affected countries goes on more or less as it had before.\par
+WWII has demonstrated that civilian populations can become inured to previously unimaginable destruction, even on the scale of low-yield nuclear weapons.  We have further seen that the radiological effects of isolated nuclear events can be limited in magnitude, isolated in space, and in some cases, limited in time.  There is thus the very real risk that a low level nuclear exchange between small nuclear powers, and the resulting aftermath, may lead to a rethinking of the reflexive horror the public has for nuclear weapons use.  Any nuclear use will also likely erode support for nuclear weapons control as non-nuclear nations scramble for a deterrent, while at the same time encouraging further use, and further erosion of the NPT.  While the world may be able to absorb the effects of any one nuclear explosion, a tipping point certainly exists where a large enough number of explosions, in a short enough period of time, could endanger modern society, if not life on earth. The greatest challenge of a proliferated world lies in mediating conflicts before they flare up into nuclear exchanges, and presenting a credible and unified threat to all parties to conflict from nuclear nations that first use will be swiftly and inevitably punished, perhaps even to the point of nuclear retaliation.
+\section{Conclusion}
+The decay of any atom in a radioactive material cannot be predicted with certainty, but the decay of the whole is certain and can be measured directly and with great accuracy.  Likewise, the incentives to nuclear proliferation will wax and wane for each non-nuclear country but eventually, for some, a threshold will be crossed.  If proliferation is to be combated, it will be incumbent on the international community to react quickly, decisively, and as a body each and every time a nation decides it has more to gain than to lose in gambling on a nuclear program.  There has been great recent success in combating proliferation both diplomatically and militarily in the middle east, but there is also a history of the Nuclear Weapons States finding their hands tied when when the proliferator is considered an ally or strategically valuable.  The world's options on North Korea are limited by its importance to China as a buffer, and Israel's close relationship with the west means it has never been called to account for its rumored program.\par
+For all the hand-wringing over proliferation, once a nuclear program is presented as a \textit{fait accompli}, the world tends to come rather rapidly to terms to the new equilibrium.  No post-NPT proliferator has had its weapons removed by force, or indeed, faced any consequences save for economic sanctions - usually temporary ones.  India, the first proliferator after the NPT went into force, has rehabilitated its image to the point that is now being integrated into the non-proliferation community.  It is doing so without surrendering its weapons, or even accepting IAEA safeguards at all of its nuclear sites.$^{\cite{Econ_Times,Arms_Control_Law}}$\par
+A widely proliferated world is an inherently more unstable and dangerous world.  However, as the regional and global importance and security of the Nth proliferating nation is in general increased by nuclearization, it is also a likely one.  Past predictions of the rate of proliferation have been notoriously exaggerated, but that does not change the fact that number of nuclear nations has historically tended to increase.  Every new entrant to the nuclear club brings with it the potential for conflicts and crises that could spiral out of control and set off a nuclear exchange.  It behooves the international policy and nuclear security communities to consider likely scenarios and their implications for international stability.  Preparing now for the worst cases will allow us to proceed intelligently, choosing the best options from a list prepared in advance rather than trying to improvise our way out of a crisis$^{\cite{RAND}}$.  As strategy requires a sane and competent opponent to work, including all nations, not just nuclear ones in the discussion, and disseminating an understanding of the double-edged nature of nuclear weapons, their value as a strategic threat, and their general worthlessness as tactical weapons, is also critical.\par
+The purpose of this paper is by no means to denigrate or discourage the work of countering and, where possible, rolling back nuclear proliferation.  But it should be clear that this will always be an uphill battle, one colored and complicated by political entanglements and the expediency of the moment.  There will always be some nations that find the status quo unacceptable, and themselves unable to work their will through conventional diplomacy or warfare.   The odds are strongly against any such country that slips through the cracks ever surrendering its weapons.  With every entrant into the nuclear club the rationale for maintaining the exclusivity of membership weakens, and with it the resolve of the member nations to combat further proliferation.  However, more nukes in more hands seems \textit{prima facie} to be less safe, and the work required to develop a plan for countries to safely share such a world will take time.  And it may well prove impossible to create a credible theory of a stable proliferated world, underlining the importance of combating proliferation until such time as process technology or international relations change the underlying assumptions of this paper.
+\newpage
+%\blindtext
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals use top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
+% floats. This can be corrected via the \fnbelowfloat command of the
+% stfloats package.
+
+
+
+%\section{Conclusion}
+%\blindtext
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Some text for the appendix.
+
+% use section* for acknowledgement
+%\section*{Acknowledgment}
+
+
+%The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+\bibitem{Waltz}\href{http://polsci.colorado.edu/sites/default/files/10B_Waltz.pdf}{The Spread of Nuclear Weapons: More May Be Better} Adelphi Papers, Book 171, International Institute for Strategic Studies, 1981\\
+
+\bibitem{Prep_Nuke}\href{http://polsci.colorado.edu/sites/default/files/10B_Waltz.pdf}{Preparing for a Nuclear World} Andrew Krepinevich, Robert MArtinage, and Robert O. Work, Challenges to US Security, p 43-55\\
+
+\bibitem{Cam_Reed} 
+Cameron Reed, Alma University, American Physics Society Forum on the History of Physics, Spring 2015 Newsletter\\
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{Brookings}\href{http://www.brookings.edu/about/projects/archive/nucweapons/manhattan}{The U.S. Nuclear Weapons Cost Study Project, Brookings Institution, 1998}\\
+
+\bibitem{CRS} \href{http://fas.org/sgp/crs/misc/RL34645.pdf}{Congressional Research Service - 
+The Manhattan Project, the Apollo Program, 
+and Federal Energy Technology R\&D 
+Programs: A Comparative Analysis, 2009}\\
+
+\bibitem{BEA} \href{http://www.bea.gov/iTable/iTable.cfm?ReqID=9&step=1#reqid=9&step=1&isuri=1}{Bureau of Economic Analysis, GDP and Personal Income Data}
+\bibitem{Rhodes} Richard Rhodes - The Making of the Atomic Bomb, 1988, Simon \& Schuster\\
+
+\bibitem{CIA} \href{https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html}{2015 CIA factbook}\\
+
+\bibitem{NPT} \href{http://disarmament.un.org/treaties/t/npt/text}{IAEA Non Proliferation Treaty}\\
+
+\bibitem{WNA}Taken from the \href{http://www.world-nuclear.org/info/nuclear-fuel-cycle/conversion-enrichment-and-fabrication/uranium-enrichment/}{World Nuclear Association's} primer on Uranium enrichment\\
+
+\bibitem{Negev} \href{http://www.wilsoncenter.org/publication/israels-quest-for-yellowcake-the-secret-argentina-israel-connection-1963-1966#_edn1}{Israel's Quest for Yellowcake: The Secret Argentina-Israel Connection}, William Burr and Avner Cohen, Wilson Center Nuclear Proliferation International History Project\\
+
+\bibitem{Pelindaba} \href{http://docs.nrdc.org/nuclear/files/nuc_10139301a_116.pdf}{High Enriched Uranium Production for South African Nuclear Weapons}, Thomas B. Cochran, Science and Global Security, Vol. 4 No. 2, Winter(93/94)\\
+
+\bibitem{CIRUS}India's Nuclear Bomb: The Impact on Global Proliferation, Updated Edition George Perkovich, 2002, University of California Press\\
+
+\bibitem{Cali_Drought} California is currently seeing the output of its hydroelectric dams \href{http://www.energy.ca.gov/drought/}{drop due to sustained drought}\\
+
+\bibitem{AHWR} The Indian government has been working on developing a Thorium based fuel cycle, mainly for reasons of energy independence, but there are indications such a fuel cycle would be less susceptible to proliferation\\
+
+\href{http://www.barc.gov.in/reactor/ahwr.pdf}{Advanced Heavy Water Reactor Specifications}, page 8-9. Bhaba Atomic Research Center\\
+
+\bibitem{IDA}\href{http://www.dtic.mil/cgi-bin/GetTRDoc?Location=U2&doc=GetTRDoc.pdf&AD=ADA275270}{The Central Asian States: Defining Security Priorities and Developing Military Forces, Susan L. Clark, Institute for Defense Analysis, 1993}\\
+
+\bibitem{DeKlerk} F.W. DeKlerk, The Last Trek - A New Beginning, 1999, Pan Books\\
+
+\bibitem{Bracken} Paul Bracken, The Second Nuclear Age, St. Martin's Griffin, 2012\\
+
+\bibitem{Bhutto} Feroz Hassan Khan, Eating Grass: The Making of the Pakistani Bomb , Stanford University Press, 2012\\
+
+\bibitem{Gavin} \href{http://www.mitpressjournals.org/doi/pdf/10.1162/isec.2010.34.3.7}{"Same as It Ever Was: Nuclear Alarmism, Proliferation, and the Cold War"} International Security Winter (09/10) p. 7-37\\
+
+\bibitem{Econ_Times}\href{http://articles.economictimes.indiatimes.com/2014-06-23/news/50798298_1_civilian-nuclear-facilities-protocol-iaea}{Decision on additional protocol signal of commitment, Economic Times of India, Jun 23, 2014}\\
+
+\bibitem{Arms_Control_Law}\href{https://armscontrollaw.files.wordpress.com/2014/06/indias-iaea-ap.pdf}{Nuclear Verification:
+The Conclusion of Safeguards Agreements and 
+of Additional Protocols - Protocol Additional to the Agreement between the Government of India and the International Atomic Energy Agency for the Application of Safeguards to Civilian Nuclear Facilities, IAEA Board of Governors,2009}\\
+
+\bibitem{RAND}\href{http://www.rand.org/content/dam/rand/pubs/monographs/2008/RAND_MG671.pdf}{The Challenge of Nuclear-Armed Regional Adversaries}, RAND, 2008, p. 47-53 a very good example of the type of work this paper is meant to foster
+\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{picture}}]{John Doe}
+%\blindtext
+%\end{IEEEbiography}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
